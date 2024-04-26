@@ -1,4 +1,4 @@
-package by.itacademy.padaliak.ui.pages;
+package by.itacademy.padaliak.ui.page;
 
 import by.itacademy.padaliak.ui.driver.Driver;
 import org.openqa.selenium.By;
@@ -15,10 +15,13 @@ public class PageObject {
 
     private String url = "https://www.ticketland.ru/";
     private By searchField = By.xpath("//input[@class='tl-input__text'][1]");
-    private By concertsSection = By.xpath("//a[@data-cross-el-content='concert']");
-    private By concertName = By.xpath("//div[@class='card-search__content']/div/h2/a[@title='Полина Гагарина']");
-    private By buyTicketBtn = By.xpath("//div[@class='show-card__col show-card__col--end']/a[@itemprop='url']");
+    private By standupSection = By.xpath("//li[@class='header__menu-link']/a[@data-cross-el-content='standup']");
+    private By buyTicketBtn = By.xpath("//div[@class='card-search__right']/a[@title='StandUp & Action (Cтендап + Джаз концерт)']");
+    private By buyTicketOnMayFirstBtn = By.xpath("//*[@id=\"list-performances\"]/div[3]/article[1]/div[2]/a");
+    private By seat = By.xpath("//*[@id=\"p67650167\"]");
+    private By checkoutBtn = By.xpath("//div[@data-js='basket-checkout']/button[@data-js='checkout-btn']");
     private By firstItemInSearch = By.xpath("//div[@class='card-search__head']/h2[@data-js='truncate-text-init']");
+    private By concertName = By.xpath("//a[@class='text-h4 tl-text-primary text-bold']");
     private By loginBtn = By.xpath("//img[@alt='Личный кабинет']");
     private By emailBtn = By.xpath("//div[@class='q-mt-md q-mb-md']/div/button[@aria-pressed='false']");
     private By emailField = By.xpath("//input[@placeholder='Ваш email']");
@@ -35,18 +38,28 @@ public class PageObject {
         driver.findElement(searchField).sendKeys(Keys.ENTER);
     }
 
-    public void clickOnConcertsSection(){
-        driver.findElement(concertsSection).click();
+    public void clickOnStandupSection(){
+        driver.findElement(standupSection).click();
     }
-    public void clickOnConcert(){
-        driver.findElement(concertName).click();
-    }
-
     public void clickOnBuyTicketBtn(){
         driver.findElement(buyTicketBtn).click();
     }
+    public void clickOnBuyTicketOnMayFirstBtn(){
+        driver.findElement(buyTicketOnMayFirstBtn).click();
+    }
+    public void clickOnSeat(){
+        driver.findElement(seat).click();
+    }
+    public void clickOnCheckoutBtn(){
+        driver.findElement(checkoutBtn).click();
+    }
 
-    public String getText() {
+    public String getConcertName() {
+        WebElement text = driver.findElement(concertName);
+        return text.getText();
+    }
+
+    public String getSearchText() {
         WebElement text = driver.findElement(firstItemInSearch);
         return text.getText();
     }

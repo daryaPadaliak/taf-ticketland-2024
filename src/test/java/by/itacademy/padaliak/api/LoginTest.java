@@ -12,10 +12,10 @@ public class LoginTest {
     @DisplayName("Login as not registered user")
     public void testLogin1() {
         given().
-                body(Login.getBody("test@gmail.com", "Password1@")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("test@gmail.com", "Password1@")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -26,10 +26,10 @@ public class LoginTest {
     @DisplayName("Login with empty Email field")
     public void testLogin2() {
         given().
-                body(Login.getBody("", "Password1@")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("", "Password1@")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -41,10 +41,10 @@ public class LoginTest {
     @DisplayName("Login with empty Password field")
     public void testLogin3() {
         given().
-                body(Login.getBody("test456@gmail.com", "")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("test456@gmail.com", "")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -55,10 +55,10 @@ public class LoginTest {
     @DisplayName("Login with empty email and empty password fields")
     public void testLogin4() {
         given().
-                body(Login.getBody("", "")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("", "")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -74,9 +74,9 @@ public class LoginTest {
         String body = "{}";
         given().
                 body(body).
-                headers(Login.getHeaders()).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -89,10 +89,10 @@ public class LoginTest {
     @DisplayName("Login with null values")
     public void testLogin6() {
         given().
-                body(Login.getBody("null", "null")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("null", "null")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -103,10 +103,10 @@ public class LoginTest {
     @DisplayName("Login with invalid email format")
     public void testLogin7() {
         given().
-                body(Login.getBody("$5%^^", "Password1@")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("$5%^^", "Password1@")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -117,10 +117,10 @@ public class LoginTest {
     @DisplayName("Login with invalid password format")
     public void testLogin8() {
         given().
-                body(Login.getBody("test34@gmail.com", "@")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("test34@gmail.com", "@")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -131,10 +131,10 @@ public class LoginTest {
     @DisplayName("Login with long email field")
     public void testLogin9() {
         given().
-                body(Login.getBody("tesruytreytuireytuierytuiryetuiyeruityeiyteiuwytuiewyruifhjdsbfsnvmbxmncbvmncxbvmncxbvmnxbmnbxzmcbzxnmbcnmzxbcnmxzbcnmxzbcnmxzbcnmxzbcmnzxbcnmzxbcnxzsfghdgsfhdjsgfjhsdgfhjsdgfhjgsdhjfghjdsgfhjdgsfhjgdshjfghjdsgfhgdshjgfhjdsgfhjdsghjfghjdsgfhjdsgfhjgdsjgfhjsdghjgfhdsgft34@gmail.com", "@")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("tesruytreytuireytuierytuiryetuiyeruityeiyteiuwytuiewyruifhjdsbfsnvmbxmncbvmncxbvmncxbvmnxbmnbxzmcbzxnmbcnmzxbcnmxzbcnmxzbcnmxzbcnmxzbcmnzxbcnmzxbcnxzsfghdgsfhdjsgfjhsdgfhjsdgfhjgsdhjfghjdsgfhjdgsfhjgdshjfghjdsgfhgdshjgfhjdsgfhjdsghjfghjdsgfhjdsgfhjgdsjgfhjsdghjgfhdsgft34@gmail.com", "@")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).
@@ -145,10 +145,10 @@ public class LoginTest {
     @DisplayName("Login using tags")
     public void testLogin10() {
         given().
-                body(Login.getBody("<b> Bold Tag </b>", "<b> Bold Tag </b>")).
-                headers(Login.getHeaders()).
+                body(LoginService.getBody("<b> Bold Tag </b>", "<b> Bold Tag </b>")).
+                headers(LoginService.getHeaders()).
                 when().
-                post(Login.URL).
+                post(LoginService.URL).
                 then().log().all().
                 statusCode(400).
                 body("message", equalTo("Ошибка заполнения формы")).

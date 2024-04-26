@@ -1,9 +1,14 @@
-## Архитектура проекта 
+## Architecture of the project
 
+Main:
+-   LoginService class (for API testing) 
+-   Driver class
+-   PageObject class 
+-   User class, Users class (for generating new users)
 
-Проект состоит из следующих модулей:
+Test:
+-   api: LoginTest class, SearchTest class, TicketlandTest class)
+-   ui: CartTest class, LoginTest class, SearchTest class
+-   BaseTest class
 
--   page objects
--   util classes
-
-Tested site [here](https://www.ticketland.ru/) 
+Tested site [here](https://www.ticketland.ru/)

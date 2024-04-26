@@ -1,6 +1,6 @@
 package by.itacademy.padaliak.ui;
 
-import by.itacademy.padaliak.ui.pages.PageObject;
+import by.itacademy.padaliak.ui.page.PageObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +9,11 @@ public class CartTest extends BaseTest {
     public void testCart() {
         PageObject pageObject = new PageObject();
         pageObject.openHomePage();
-        pageObject.clickOnConcertsSection();
-        pageObject.clickOnConcert();
+        pageObject.clickOnStandupSection();
         pageObject.clickOnBuyTicketBtn();
-        Assertions.assertEquals("Золушка", pageObject.getText());
+        pageObject.clickOnBuyTicketOnMayFirstBtn();
+        pageObject.clickOnSeat();
+        pageObject.clickOnCheckoutBtn();
+        Assertions.assertEquals("StandUp &amp; Action (Cтендап + Джаз концерт)", pageObject.getConcertName());
     }
 }
