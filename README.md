@@ -7,7 +7,7 @@ Main:
 -   User class, Users class (for generating new users)
 
 Test:
--   api: LoginTest class, SearchTest class, TicketlandTest class)
+-   api: LoginTest class, SearchTest class, TicketlandTest class
 -   ui: CartTest class, LoginTest class, SearchTest class
 -   BaseTest class
 
