@@ -3,7 +3,7 @@ package by.itacademy.padaliak.api;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login {
+public class LoginService {
     public final static String URL = "https://www.ticketland.ru/spa-api/login/email";
 
     public static String getBody(String email, String password) {
